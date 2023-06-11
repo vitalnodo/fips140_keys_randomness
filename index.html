@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking keys for randomness according to the FIPS140 standard</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+
+<body>
+    <h1>Checking keys for randomness according to the FIPS140 standard</h1>
+    <textarea id="bits"></textarea>
+    <fieldset>
+        <legend>Choose a test</legend>
+        <div>
+            <input type="checkbox" name="monobit" id="monobit" checked>
+            <label for="monobit">Monobit</label>
+            <input type="checkbox" name="poker" id="poker" checked>
+            <label for="poker">Poker</label>
+            <input type="checkbox" name="runs" id="runs" checked>
+            <label for="runs">Runs</label>
+            <input type="checkbox" name="runs" id="long_run" checked>
+            <label for="long_run">Long runs</label>
+            <input type="checkbox" name="debug" id="debug">
+            <label for="debug">Enable debug to console</label>
+        </div>
+    </fieldset>
+    <button id="test">Test</button>
+    <button id="generate">Generate</button>
+
+    <div class="notice">
+        <p style="color: red;" id="error"></p>
+        Monobit: <p style="color: red;" id="status_monobit"></p>
+        Poker: <p style="color: red;" id="status_poker"></p>
+        Runs: <p style="color: red;" id="status_runs"></p>
+        Long runs: <p style="color: red;" id="status_long_run"></p>
+    </div>
+    <div class="notice">
+    <h2>Constants</h2>
+    <h3>The Monobit Test</h2>
+    The test is passed if 9,654 < number of ones in the 20,000 bit stream < 10,346.
+    <h3>The Poker Test</h2>
+    The test is passed if 1.03 < X < 57.4.
+    <h3>The Runs Test</h3>
+    <table>
+        <tr>
+          <th>Length of Run</th>
+          <th>Required Interval</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2267 – 2733</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>1079 – 1421</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>502 – 748</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>223 – 402</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>90 – 223</td>
+        </tr>
+        <tr>
+          <td>6+</td>
+          <td>90 – 223</td>
+        </tr>
+      </table>
+    <h3>The long run test</h3>
+    A long run is defined to be a run of length 34 or more (of either zeros or ones).
+    </div>
+
+<script src="test.js"></script>
+</body>
+</html>
